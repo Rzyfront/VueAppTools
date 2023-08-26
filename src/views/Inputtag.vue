@@ -1,12 +1,12 @@
 <template>
   <main class="inputTag">
     <h2>Input multiselector tags</h2>
-    <InputMultiTag :onTagsChange="handlerOnTagsChange"/>
+    <!-- <InputMultiTag :onTagsChange="handlerOnTagsChange"/> -->
   </main>
 </template>
 
 <script>
-import InputMultiTag from '../components/inputmultitag.vue';
+
 
 export default {
   components:{

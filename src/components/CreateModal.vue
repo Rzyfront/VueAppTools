@@ -1,15 +1,36 @@
 <template >
-    <div class="modal-container">
-        <div class="modal">
+    <div  @click="handleClose" class="modal-container">
+        <div @click="handleModal" class="modal">
+            <Close class="close" v-on:click="handleClose"/>
             <h3 class="create-title">Create new board</h3>
-            <input type="text" placeholder="Board name" class="create-input">
-            <button class="create-button">Create</button>
+            <input type="text" placeholder="Board name" class="create-input" v-model="boardName">
+            <button @click="handleCreate" class="create-button">Create</button>
         </div>
     </div>
 </template>
 
 <script setup>
+import { ref ,inject, defineEmits } from 'vue';
+import Close from "./ui/Close.vue"
 
+
+const { toggleModal } = inject('modalState');
+const emits = defineEmits(["createInfo"]);
+const boardName = ref("");
+
+const handleClose = (e)=>{
+    toggleModal();
+}
+
+const handleModal = (e)=>{
+     e.stopPropagation();
+}
+
+const handleCreate = (e)=>{
+    e.stopPropagation();
+    emits("createInfo", boardName);
+    boardName.value= "";
+}
 </script>
 
 <style scoped>
@@ -26,6 +47,7 @@
     }
 
     .modal{
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -58,7 +80,7 @@
 
     .create-button{
         width: 150px;
-        padding: 5px 30px;
+        padding: 10px 30px;
         border-radius: 5px;
         border: none;
         outline: none;
@@ -69,5 +91,18 @@
     .create-button:hover{
         background-color: var(--color2);
         color: white;
+    }
+
+    .close{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+        transition: 0.3s;
+    }
+
+    .close:hover{
+        transform: scale(1.1);
     }
 </style>

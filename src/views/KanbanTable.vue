@@ -1,6 +1,6 @@
 <template>
     <main class="KanbanView">
-        <CreateModal v-if="modalVisible"/>
+        <CreateModal v-if="modalVisible" @create-info=""/>
         <h2>Kanba Board</h2>
         <button @click="handleCreate">Create new board</button>
         <Todos/>
