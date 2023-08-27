@@ -4,7 +4,7 @@
 
           <div class="tags">
               <div class="tag" v-for="(tag, index) in tags" :key="index">
-                  {{ tag }} <button @click="deleteTag(tag)"><img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/macos-close.png" alt="macos-close"/></button>
+                  {{ tag }} <CloseBoard @click="deleteTag(tag)" class="delete-task"/>
               </div>
           </div>
           <form @submit.prevent="handleSubmit">
@@ -15,11 +15,13 @@
 
 </template>
 <script>
+import CloseBoard from './ui/CloseBoard.vue';
+
 export default {
      data() {
         return {
             currentValue: "",
-            tags: [],
+            tags: ["Example"],
         }
     },
     // emits: ["onTagsChange"], para agregarlo como @onTagsChange
@@ -33,11 +35,13 @@ export default {
             }
         },
         handleSubmit() {
-            if (this.currentValue !== "") {
+            if (this.currentValue !== "" && this.tags.length < 5) {
                 this.tags.push(this.currentValue);
                 this.currentValue = "";
                 this.onTagsChange(this.tags)
                  // this.$emit("onTagsChange", this.tags); para agregarlo como @onTagsChange
+            }else if (this.tags.length >= 5) {
+              alert("5 tags maximummn");
             }
         },
         deleteTag(tag) {
@@ -45,6 +49,9 @@ export default {
             this.onTagsChange(this.tags)
              // this.$emit("onTagsChange", this.tags); para agregarlo como @onTagsChange
         }
+    },
+    components: {
+    CloseBoard
     },
 
 }
@@ -71,33 +78,22 @@ export default {
       gap: 10px;
       align-items: center;
       justify-content: center;
-      background-color: white;
+      background-color: var(--color4);
       padding: 2px 0px 2px 10px;
       box-shadow: rgba(0, 0, 0, 0.544) 0px 1px 4px;
       border-radius: 5px;
     }
 
-    .inputTag .input_Tag_Container .tags .tag button{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      outline: none;
-      border: none;
-      background-color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .inputTag .input_Tag_Container .tags .tag button img{
+    .delete-task{
       width: 25px;
       height: 25px;
-      border-radius: 50%;
-      transition: 0.2s;
+      transition: 0.4s;
     }
 
-    .inputTag .input_Tag_Container .tags .tag button:hover img{
-      transform: rotate(180deg);
+    .tag:hover .delete-task{
+      transform: rotate(90deg);
     }
+
     .inputTag .input_Tag_Container form{
       display: inline-flex;
       height: 100%;

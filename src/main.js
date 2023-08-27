@@ -1,5 +1,10 @@
 import './assets/main.css';
-import { modalVisible, toggleModal } from '../hooks/useCreateModal';
+import {
+  toggleBoardModal,
+  modalBoardVisible,
+  toggleTaskModal,
+  modalTaskVisible
+} from '../hooks/useCreateModal';
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
@@ -8,7 +13,9 @@ const app = createApp(App);
 
 app.use(router);
 app.provide('modalState', {
-  modalVisible,
-  toggleModal
+  toggleBoardModal,
+  modalBoardVisible,
+  toggleTaskModal,
+  modalTaskVisible
 });
 app.mount('#app');

@@ -1,9 +1,9 @@
 <template >
-    <div  @click="handleClose" class="modal-container">
+    <div  @click="toggleBoardModal" class="modal-container">
         <div @click="handleModal" class="modal">
-            <Close class="close" v-on:click="handleClose"/>
+            <Close class="close" @click="toggleBoardModal"/>
             <h3 class="create-title">Create new board</h3>
-            <input type="text" placeholder="Board name" class="create-input" v-model="boardName">
+            <input autofocus type="text" placeholder="Board name" class="create-input" v-model="boardName" @keydown="handleKeyDown">
             <button @click="handleCreate" class="create-button">Create</button>
         </div>
     </div>
@@ -14,13 +14,10 @@ import { ref ,inject, defineEmits } from 'vue';
 import Close from "./ui/Close.vue"
 
 
-const { toggleModal } = inject('modalState');
+const { toggleBoardModal } = inject('modalState');
 const emits = defineEmits(["createInfo"]);
 const boardName = ref("");
 
-const handleClose = (e)=>{
-    toggleModal();
-}
 
 const handleModal = (e)=>{
      e.stopPropagation();
@@ -31,6 +28,12 @@ const handleCreate = (e)=>{
     emits("createInfo", boardName);
     boardName.value= "";
 }
+
+const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+        handleCreate(e);
+    }
+}
 </script>
 
 <style scoped>
@@ -38,7 +41,7 @@ const handleCreate = (e)=>{
     .modal-container{
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: calc( 100vh - 60px);
         display: flex;
         align-items: center;
         justify-content: center;

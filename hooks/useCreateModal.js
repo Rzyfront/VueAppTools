@@ -1,9 +1,19 @@
 import { ref } from 'vue';
 
-const modalVisible = ref(false);
+const modalBoardVisible = ref(false);
+const modalTaskVisible = ref(false);
 
-function toggleModal() {
-  modalVisible.value = !modalVisible.value;
+function toggleBoardModal() {
+  modalBoardVisible.value = !modalBoardVisible.value;
 }
 
-export { modalVisible, toggleModal };
+function toggleTaskModal() {
+  modalTaskVisible.value = !modalTaskVisible.value;
+}
+
+export {
+  toggleBoardModal,
+  modalBoardVisible,
+  toggleTaskModal,
+  modalTaskVisible
+};

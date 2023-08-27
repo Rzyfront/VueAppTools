@@ -7,9 +7,9 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/inputtag">Inputtag</RouterLink>
         <RouterLink to="/ktable">Kanban table</RouterLink>
-        <RouterLink to="/splitcount">Split Count</RouterLink>
+        <!-- <RouterLink to="/splitcount">Split Count</RouterLink>
         <RouterLink to="/freader">Fonts reader</RouterLink>
-        <RouterLink to="/menu">Colapse Menu</RouterLink>
+        <RouterLink to="/menu">Colapse Menu</RouterLink> -->
         </div>
         </div>
     </nav>
