@@ -4,11 +4,11 @@
             <img src="/setting.png" alt="App-Logo" class="logo">
         
         <div class="links">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/inputtag">Inputtag</RouterLink>
-        <RouterLink to="/ktable">Kanban table</RouterLink>
-        <!-- <RouterLink to="/splitcount">Split Count</RouterLink>
-        <RouterLink to="/freader">Fonts reader</RouterLink>
+        <RouterLink enter-active-class="active" to="/">Home</RouterLink>
+        <RouterLink enter-active-class="active" to="/inputtag">Inputtag</RouterLink>
+        <RouterLink enter-active-class="active" to="/ktable">Kanban table</RouterLink>
+        <RouterLink enter-active-class="active" to="/splitcount">Split Count</RouterLink>
+        <!-- <RouterLink to="/freader">Fonts reader</RouterLink>
         <RouterLink to="/menu">Colapse Menu</RouterLink> -->
         </div>
         </div>
@@ -60,5 +60,10 @@ export default {
         color: #F7E987;
         border-bottom: solid 1px rgb(228, 68, 68);
     }
+
+    .active{
+        color: black;
+    }
+
 
 </style>

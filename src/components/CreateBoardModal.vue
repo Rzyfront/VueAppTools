@@ -41,12 +41,13 @@ const handleKeyDown = (e) => {
     .modal-container{
         position: absolute;
         width: 100%;
-        height: calc( 100vh - 60px);
+        height: calc( 100vh - 90px);
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 50;
         backdrop-filter: blur(3px); 
+        overflow: hidden;
     }
 
     .modal{
